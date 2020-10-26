@@ -174,6 +174,21 @@ distro=""
     grub="grub2"
   fi
 
+# Ubuntu derivate
+[ -f /etc/issue ] &&
+  if [[ "$(cat /etc/issue)" == *Ubuntu\ 20.04.1\ LTS* ]]; then
+    distro="ubuntu-20"
+    initrd_path="bin sbin"
+    initrd="/boot/initrd.img-$(uname -r)"
+    kernel="/boot/vmlinuz-$(uname -r)"
+    init_script="scripts/local"
+    proc_insert_point="^mountroot()"
+    proc_name="\        growroot"
+    call_insert_point="^.*pre_mountroot$"
+    grub_config="/boot/grub/grub.cfg"
+    grub="grub2"
+  fi
+
 # exit if distro is not supported
 if [ "${distro}" == "" ]; then
   echo "Distribution NOT supported!"
