@@ -187,7 +187,7 @@ distro=""
     call_insert_point="^.*pre_mountroot$"
     grub_config="/boot/grub/grub.cfg"
     grub="grub2"
-  elif [[ "$(cat /etc/issue)" == *Ubuntu\ 18.04.5\ LTS* ]]; then
+  elif [[ "$(cat /etc/issue)" == *Ubuntu\ 18.04.2\ LTS* ]]; then
     distro="ubuntu-20"
     initrd_path="bin sbin"
     initrd="/boot/initrd.img-$(uname -r)"
